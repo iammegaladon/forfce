@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Installation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .terminal {
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+            padding: 20px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            width: 80%;
+            height: 60vh;
+            overflow-y: auto;
+            margin: 50px auto;
+        }
+        .terminal .log {
+            margin: 0;
+        }
+        .terminal .log.error {
+            color: #ea4335; /* red */
+        }
+        .terminal .log.reverting {
+            color: #fbbc05; /* yellow */
+        }
+        .progress-bar {
+            background-color: #4caf50; /* green */
+            height: 5px;
+            width: 0;
+            transition: width 2s;
+        }
+        .warning {
+            color: #ea4335; /* red */
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .footer {
+            text-align: center;
+            color: #888;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+       const initialLogMessages = [
+    "Downloading iOS resource package...",
+    "Unpacking files...",
+    "Verifying package integrity...",
+    "Installing iOS components...",
+    "Setting up IMVU modules...",
+    "Applying block security patches...",
+    "Updating Apple frameworks...",
+    "Configuring iPhone settings...",
+    "Installing block assets...",
+    "Synchronizing with Apple server...",
+    "Connecting to IMVU services...",
+    "Loading system preferences...",
+    "Optimizing performance...",
+    "Cleaning up installation files...",
+    "Downloading IMVU avatar assets...",
+    "Downloading iOS system updates...",
+    "Downloading security patches...",
+    "Downloading UI components...",
+    "Updating firmware components...",
+    "Installing system libraries...",
+    "Finalizing module setup...",
+    "Deploying application files...",
+    "Applying final security updates...",
+    "Preparing installation environment...",
+    "Initializing setup sequence...",
+    "Creating backup files...",
+    "Removing old versions...",
+    "Setting up network connections...",
+    "Updating configuration files...",
+    "Installing necessary drivers...",
+    "Checking system requirements...",
+    "Allocating resources...",
+    "Starting installation process...",
+    "Retrieving package metadata...",
+    "Extracting compressed files...",
+    "Applying initial settings...",
+    "Setting up user environment...",
+    "Customizing user interface...",
+    "Registering new modules...",
+    "Performing system checks...",
+    "Calibrating system parameters...",
+    "Verifying digital signatures...",
+    "Checking disk space availability...",
+    "Ensuring system compatibility...",
+    "Downloading additional resources...",
+    "Installing support files...",
+    "Running pre-installation scripts...",
+    "Initializing download manager...",
+    "Connecting to update servers...",
+    "Synchronizing system clock...",
+    "Configuring network protocols...",
+    "Updating software licenses...",
+    "Finalizing installation steps...",
+    "Restarting services...",
+    "Loading user data...",
+    "Synchronizing settings...",
+    "Applying configuration changes...",
+    "Generating system reports...",
+    "Verifying installation...",
+    "Completing setup wizard...",
+    "Loading initialization scripts...",
+    "Updating system registry...",
+    "Registering components...",
+    "Checking for updates...",
+    "Installing update packages...",
+    "Verifying update integrity...",
+    "Finalizing updates...",
+    "Cleaning up temporary files...",
+    "Preparing user profiles...",
+    "Loading application resources...",
+    "Configuring application settings...",
+    "Applying user preferences...",
+    "Initializing application modules...",
+    "Loading application data...",
+    "Optimizing application startup...",
+    "Performing final checks...",
+    "Starting services...",
+    "Launching application...",
+    "Configuring security settings...",
+    "Scanning for threats...",
+    "Updating virus definitions...",
+    "Checking system health...",
+    "Performing security audit...",
+    "Applying security policies...",
+    "Verifying system integrity...",
+    "Enabling security features...",
+    "Updating system logs...",
+    "Generating system alerts...",
+    "Finalizing security setup...",
+    "Synchronizing user accounts...",
+    "Verifying user credentials...",
+    "Setting up authentication...",
+    "Configuring user permissions...",
+    "Updating access controls...",
+    "Applying user roles...",
+    "Synchronizing user data...",
+    "Creating user profiles...",
+    "Finalizing user setup...",
+    "Loading user interface...",
+    "Customizing application themes...",
+    "Applying visual settings...",
+    "Optimizing user experience...",
+    "Loading user dashboards...",
+    "Configuring notifications...",
+    "Setting up alerts...",
+    "Updating notification preferences...",
+    "Synchronizing alert settings...",
+    "Finalizing alert configuration...",
+    "Loading final components..."
+];
+
+
+        const finalLogMessages = [
+            "Finalizing installation...",
+            "Checking system integrity...",
+            "Applying final security patches...",
+            "Updating firmware...",
+            "Completing setup tasks...",
+            "Finishing up installation...",
+            "Final system checks...",
+            "Installation complete..."
+        ];
+
+        const errorMessages = [
+    "ERROR: Unable to write to disk",
+    "ERROR: File corrupted during transfer",
+    "ERROR: Failed to authenticate with server",
+    "ERROR: Insufficient permissions",
+    "ERROR: Connection timeout",
+    "ERROR: Resource not found",
+    "ERROR: Incompatible device driver",
+    "ERROR: Failed to load module",
+    "ERROR: Out of memory",
+    "ERROR: Invalid configuration detected",
+    "ERROR: Hardware pointer initialization failed",
+    "ERROR: Hardware pointer update aborted",
+    "ERROR: Pointer device not responding",
+    "ERROR: Hardware pointer mismatch detected",
+    "ERROR: Unable to allocate hardware pointer resources",
+    "ERROR: Hardware pointer reference lost",
+    "ERROR: Failed to resolve hardware pointer conflict",
+    "ERROR: Invalid hardware pointer address",
+    "ERROR: Hardware pointer out of range",
+    "ERROR: Hardware pointer synchronization error",
+    "ERROR: Failed to register hardware pointer",
+    "ERROR: Hardware pointer buffer overflow",
+    "ERROR: Hardware pointer memory leak detected",
+    "ERROR: Hardware pointer calibration failed",
+    "ERROR: Hardware pointer firmware outdated",
+    "ERROR: Inconsistent hardware pointer state",
+    "ERROR: Hardware pointer operation timeout",
+    "ERROR: Invalid hardware pointer parameters",
+    "ERROR: Hardware pointer initialization timeout",
+    "ERROR: Failed to map hardware pointer",
+    "ERROR: Hardware pointer interrupt error",
+    "ERROR: Hardware pointer dependency missing",
+    "ERROR: Hardware pointer I/O error",
+    "ERROR: Hardware pointer configuration corrupted",
+    "ERROR: Hardware pointer update failed",
+    "ERROR: Unrecognized hardware pointer type",
+    "ERROR: Hardware pointer communication error",
+    "ERROR: Hardware pointer access denied",
+    "ERROR: Hardware pointer resource locked",
+    "ERROR: Hardware pointer initialization sequence error",
+    "ERROR: Hardware pointer reset required",
+    "ERROR: Hardware pointer version conflict",
+    "ERROR: Hardware pointer resource unavailable",
+    "ERROR: Hardware pointer diagnostics failed",
+    "ERROR: Hardware pointer integrity compromised",
+    "ERROR: Hardware pointer registration failed",
+    "ERROR: Hardware pointer mapping error",
+    "ERROR: Hardware pointer execution error",
+    "ERROR: Hardware pointer process terminated",
+    "ERROR: Hardware pointer state invalid",
+    "ERROR: Hardware pointer integrity check failed",
+    "ERROR: Hardware pointer protocol mismatch",
+    "ERROR: Hardware pointer signal lost",
+    "ERROR: Hardware pointer signal interference",
+    "ERROR: Hardware pointer update conflict",
+    "ERROR: Hardware pointer performance degraded",
+    "ERROR: Hardware pointer firmware conflict",
+    "ERROR: Hardware pointer cache error",
+    "ERROR: Hardware pointer synchronization lost",
+    "ERROR: Hardware pointer update integrity failed",
+    "ERROR: Hardware pointer data loss",
+    "ERROR: Hardware pointer packet error",
+    "ERROR: Hardware pointer configuration error",
+    "ERROR: Hardware pointer power failure",
+    "ERROR: Hardware pointer unexpected shutdown",
+    "ERROR: Hardware pointer network error",
+    "ERROR: Hardware pointer connection refused",
+    "ERROR: Hardware pointer update timeout",
+    "ERROR: Hardware pointer command failed",
+    "ERROR: Hardware pointer service unavailable",
+    "ERROR: Hardware pointer load error",
+    "ERROR: Hardware pointer dependency error",
+    "ERROR: Hardware pointer update blocked",
+    "ERROR: Hardware pointer synchronization blocked",
+    "ERROR: Hardware pointer resource conflict",
+    "ERROR: Hardware pointer not supported",
+    "ERROR: Hardware pointer initialization aborted",
+    "ERROR: Hardware pointer invalid state",
+    "ERROR: Hardware pointer state transition failed",
+    "ERROR: Hardware pointer data integrity compromised",
+    "ERROR: Hardware pointer device unresponsive",
+    "ERROR: Hardware pointer system overload",
+    "ERROR: Hardware pointer resource exhausted",
+    "ERROR: Hardware pointer protocol error",
+    "ERROR: Hardware pointer update protocol error",
+    "ERROR: Hardware pointer operation failed",
+    "ERROR: Hardware pointer update operation failed",
+    "ERROR: Hardware pointer update aborted",
+    "ERROR: Hardware pointer configuration rollback failed",
+    "ERROR: Hardware pointer memory allocation failed",
+    "ERROR: Hardware pointer memory deallocation failed",
+    "ERROR: Hardware pointer initialization process halted",
+    "ERROR: Hardware pointer data mismatch detected",
+    "ERROR: Hardware pointer buffer allocation failed",
+    "ERROR: Hardware pointer interrupt request failed",
+    "ERROR: Hardware pointer system call failed",
+    "ERROR: Hardware pointer update validation failed",
+    "ERROR: Hardware pointer device disconnected",
+    "ERROR: Hardware pointer device not initialized",
+    "ERROR: Hardware pointer data read error",
+    "ERROR: Hardware pointer data write error",
+    "ERROR: Hardware pointer initialization validation failed",
+    "ERROR: Hardware pointer unexpected response received"
+];
+
+        function addLog(message, type) {
+            const logElement = document.getElementById('terminal-log');
+            const log = document.createElement('p');
+            log.classList.add('log');
+            if (type === 'error') {
+                log.classList.add('error');
+            } else if (type === 'reverting') {
+                log.classList.add('reverting');
+            }
+            log.textContent = message;
+            logElement.appendChild(log);
+            logElement.scrollTop = logElement.scrollHeight;
+
+            if (message.includes("Downloading")) {
+                const progressBar = document.createElement('div');
+                progressBar.classList.add('progress-bar');
+                logElement.appendChild(progressBar);
+                const downloadTime = Math.random() * 5 + 1; // Random download time between 1 and 6 seconds
+                setTimeout(() => {
+                    progressBar.style.width = "100%";
+                }, 100);
+                setTimeout(() => {
+                    logElement.removeChild(progressBar);
+                }, downloadTime * 1000); // Remove the progress bar after download completes
+            }
+        }
+
+        function startInstallation() {
+            addLog('Now Installing Resources...');
+            let initialLogInterval = setInterval(() => {
+                addLog(initialLogMessages[Math.floor(Math.random() * initialLogMessages.length)]);
+            }, 1000);
+
+            setTimeout(() => {
+                clearInterval(initialLogInterval);
+                let finalLogInterval = setInterval(() => {
+                    addLog(finalLogMessages[Math.floor(Math.random() * finalLogMessages.length)]);
+                }, 1000);
+
+                setTimeout(() => {
+                    clearInterval(finalLogInterval);
+                    addLog('ERROR: Phone instance updated', 'error');
+                    setTimeout(() => {
+                        addLog('ERROR: Phone hardware conflict with software changes', 'error');
+                        let errorLogCount = 0;
+                        let errorInterval = setInterval(() => {
+                            if (errorLogCount < 120 * 60) { // 120 logs per second for 60 seconds
+                                addLog(errorMessages[Math.floor(Math.random() * errorMessages.length)], 'error');
+                                errorLogCount++;
+                            } else {
+                                clearInterval(errorInterval);
+                                addLog('Reverting changes...', 'reverting');
+                            }
+                        }, 1000 / 120); // 120 logs per second
+                    }, 3000);
+                }, 60 * 1000); // Finalizing logs for 1 minute
+            }, 23 * 60 * 1000); // Initial logs for 23 minutes
+        }
+    </script>
+</head>
+<body onload="startInstallation()">
+    <div class="terminal" id="terminal-log">
+        <p class="log">Initializing installation sequence...</p>
+    </div>
+    <div class="warning">
+        The resources are installing. Please don't unplug the device or turn off the internet connection. It will harm your device.
+    </div>
+    <div class="footer">
+        Powered by Block Technologies LTD from engineers of APPLE INC.
+    </div>
+</body>
+</html>

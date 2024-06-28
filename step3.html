@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Recovery</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for the page */
+        .ppro-bg {
+            background-color: #f0f4f8;
+        }
+        .ppro-text {
+            color: #dc3545; /* red */
+        }
+        .ppro-subtext {
+            color: #6c757d; /* grey */
+        }
+        .ppro-text-blue {
+            color: #007bff; /* blue */
+        }
+        .ppro-text-green {
+            color: #28a745; /* green */
+        }
+    </style>
+    <script>
+        function startSequence() {
+            setTimeout(function() {
+                document.getElementById('subtext').innerText = 'Device Turned Off';
+                setTimeout(function() {
+                    document.getElementById('status').innerText = 'Now Switching the Device into Recovery Mode';
+                    document.getElementById('status').classList.remove('ppro-text');
+                    document.getElementById('status').classList.add('ppro-text-blue');
+                    document.getElementById('subtext').innerText = '';
+                    setTimeout(function() {
+                        document.getElementById('status').innerText = 'Device Set to Recovery Mode Succeed!';
+                        document.getElementById('status').classList.remove('ppro-text-blue');
+                        document.getElementById('status').classList.add('ppro-text-green');
+                        setTimeout(function() {
+                            window.location.href = 'step4.html'; // Replace with your target URL
+                        }, 2000);
+                    }, 10000);
+                }, 2000);
+            }, 30000);
+        }
+    </script>
+</head>
+<body onload="startSequence()" class="h-screen flex flex-col justify-center items-center ppro-bg">
+    <div class="text-center">
+        <h1 id="status" class="text-4xl ppro-text">Please Turn off Your Device!!</h1>
+        <p id="subtext" class="text-lg ppro-subtext mt-2">Checking Device State...</p>
+    </div>
+</body>
+</html>
+

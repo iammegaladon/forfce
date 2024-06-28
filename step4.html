@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloading Utilities and Resources</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .ppro-bg {
+            background-color: #f0f4f8;
+        }
+        .ppro-text {
+            color: #007bff; /* blue */
+        }
+        .progress-bar {
+            height: 25px;
+            background-color: #007bff;
+            width: 0;
+            transition: width 1s linear;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        function startDownload() {
+            // Complete the first download (Utilities)
+            document.getElementById('progress-bar').style.width = '100%';
+            setTimeout(function() {
+                // Reset the progress bar
+                document.getElementById('progress-bar').style.transition = 'none';
+                document.getElementById('progress-bar').style.width = '0';
+                // Start the second download (Resources)
+                setTimeout(function() {
+                    document.getElementById('status').innerText = 'Downloading Resources...';
+                    document.getElementById('size').innerText = 'Size: 1.32 GB';
+                    document.getElementById('progress-bar').style.transition = 'width 72s linear'; // 1.2 minutes (72 seconds)
+                    document.getElementById('progress-bar').style.width = '100%';
+                    setTimeout(function() {
+                        document.getElementById('status').innerText = 'Resources Downloaded';
+                        setTimeout(function() {
+                            window.location.href = 'step5.html'; // Replace with your target URL
+                        }, 2000);
+                    }, 72000);
+                }, 100);
+            }, 1000);
+        }
+    </script>
+</head>
+<body onload="startDownload()" class="h-screen flex flex-col justify-center items-center ppro-bg">
+    <div class="text-center">
+        <h1 id="status" class="text-4xl ppro-text">Now Downloading Utilities</h1>
+        <p id="size" class="text-lg text-gray-700 mt-2">Size: 3.8 MB</p>
+        <div class="progress-container mt-4 w-3/4 md:w-1/2 lg:w-1/3">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+    </div>
+</body>
+</html>

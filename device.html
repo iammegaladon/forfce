@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Details</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .device-details-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+        .device-details {
+            margin-bottom: 1rem;
+        }
+        .btn-custom {
+            background-color: #3498db;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="device-details-container">
+            <h2 class="text-center">Welcome to Block iOS App Installer!</h2>
+            <div class="device-details">
+                <strong>Device:</strong> IPHONE 11*Srvc
+            </div>
+            <div class="device-details">
+                <strong>Bypassed:</strong> NO
+            </div>
+            <div class="device-details">
+                <strong>Unlocked:</strong> NO
+            </div>
+            <div class="device-details">
+                <strong>Telecom Network:</strong> AT&T
+            </div>
+            <div class="device-details">
+                <strong>Service Status:</strong> TEMPERED
+            </div>
+            <div class="device-details">
+                <strong>Compatibility:</strong> PASSED
+            </div>
+            <button type="button" class="btn btn-custom btn-block" onclick="checkCompatibility()">Check Hardware/Software Compatibility</button>
+        </div>
+    </div>
+
+    <script>
+        function checkCompatibility() {
+            window.location.href = "loading.html"; // Replace with your desired URL
+            // Here, you would add the actual logic to check compatibility
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
