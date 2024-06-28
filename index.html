@@ -3,44 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading Spinner</title>
+    <title>Connect Your Device</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .spinner-border-custom {
-            width: 3rem;
-            height: 3rem;
-            border-width: 0.25rem;
-            color: #3498db;
+        body {
+            background-color: #eef2f7;
+            font-family: 'Roboto', sans-serif;
         }
-        .please-wait-text {
-            margin-top: 1rem;
-            font-size: 1.5rem;
-            font-family: 'Arial', sans-serif;
-            color: #3498db;
+        .connect-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: all 0.3s ease-in-out;
+        }
+        .connect-container:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .btn-custom {
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .btn-custom:hover {
+            background-color: #2980b9;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+        .header h2 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+        .device-image {
+            width: 150px;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+        .steps {
+            margin-bottom: 1.5rem;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #3498db;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        .step-description {
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+        .footer-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
-    <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
-        <div class="spinner-border spinner-border-custom" role="status">
-            <span class="sr-only">Loading...</span>
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="connect-container">
+            <div class="header">
+                <img src="logo.png" alt="Device Image" class="device-image">
+                <h2>Connect Your Device</h2>
+                <p>Follow the steps below to connect your device to the system.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">1</div>
+                    <div class="step-description">Ensure your device is turned on.</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">2</div>
+                    <div class="step-description">Connect your device to the computer using a USB cable.</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <div class="step-description">Wait for the system to recognize your device.</div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-custom btn-block" onclick="deviceConnected()">Already Connected</button>
+            <div class="footer-text">
+                <p>If you encounter any issues, please refer to the troubleshooting guide or contact support.</p>
+            </div>
         </div>
-        <div class="please-wait-text">Please Wait</div>
     </div>
+
+    <script>
+        function deviceConnected() {
+            window.location.href = "init.html"; // Replace with your desired URL
+            // Here, you would add the actual logic to verify the connection
+        }
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-<script>
-    // Function to redirect after 6 seconds
-    function redirectAfterDelay() {
-        setTimeout(function() {
-            window.location.href = "login.html"; // Replace with your desired URL
-        }, 6000);
-    }
-
-    // Call the function when the page loads
-    window.onload = redirectAfterDelay;
-</script>

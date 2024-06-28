@@ -6,47 +6,103 @@
     <title>Device Details</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        body {
+            background-color: #eef2f7;
+            font-family: 'Roboto', sans-serif;
+        }
         .device-details-container {
             max-width: 600px;
             margin: auto;
             padding: 2rem;
             border: 1px solid #ddd;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: all 0.3s ease-in-out;
+        }
+        .device-details-container:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
         .device-details {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+            transition: all 0.3s ease-in-out;
+        }
+        .device-details:hover {
+            background-color: #e0e0e0;
         }
         .btn-custom {
             background-color: #3498db;
             color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .btn-custom:hover {
+            background-color: #2980b9;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+        .header h2 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+        .details-group {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .details-group:last-child {
+            border-bottom: none;
+        }
+        .details-group strong {
+            color: #2c3e50;
         }
     </style>
 </head>
 <body>
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="device-details-container">
-            <h2 class="text-center">Welcome to Block iOS App Installer!</h2>
-            <div class="device-details">
-                <strong>Device:</strong> IPHONE 11*Srvc
+            <div class="header">
+               
+               
+                <p>Your device details are listed below:</p>
             </div>
-            <div class="device-details">
-                <strong>Bypassed:</strong> NO
+            <div class="details-group">
+                <strong>Device:</strong>
+                <span>IPHONE 11(US)</span>
             </div>
-            <div class="device-details">
-                <strong>Unlocked:</strong> NO
+            <div class="details-group">
+                <strong>Bypassed:</strong>
+                <span>NO</span>
             </div>
-            <div class="device-details">
-                <strong>Telecom Network:</strong> AT&T
+            <div class="details-group">
+                <strong>Unlocked:</strong>
+                <span>NO</span>
             </div>
-            <div class="device-details">
-                <strong>Service Status:</strong> TEMPERED
+            <div class="details-group">
+                <strong>Telecom Network:</strong>
+                <span>AT&T</span>
             </div>
-            <div class="device-details">
-                <strong>Compatibility:</strong> PASSED
+            <div class="details-group">
+                <strong>Service Status:</strong>
+                <span>TEMPERED</span>
             </div>
-            <button type="button" class="btn btn-custom btn-block" onclick="checkCompatibility()">Check Hardware/Software Compatibility</button>
+            <div class="details-group">
+                <strong>Compatibility:</strong>
+                <span>PASSED</span>
+            </div>
+            <button type="button" class="btn btn-custom btn-block mt-4" onclick="checkCompatibility()">Check Hardware/Software Compatibility</button>
         </div>
     </div>
 

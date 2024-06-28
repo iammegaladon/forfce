@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Spinner</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .spinner-border-custom {
+            width: 3rem;
+            height: 3rem;
+            border-width: 0.25rem;
+            color: #3498db;
+        }
+        .please-wait-text {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            font-family: 'Arial', sans-serif;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
+        <div class="spinner-border spinner-border-custom" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="please-wait-text">Checking Device..</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+<script>
+    // Function to redirect after 6 seconds
+    function redirectAfterDelay() {
+        setTimeout(function() {
+            window.location.href = "device.html"; // Replace with your desired URL
+        }, 12000);
+    }
+
+    // Call the function when the page loads
+    window.onload = redirectAfterDelay;
+</script>
