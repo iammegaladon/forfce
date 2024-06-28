@@ -30,28 +30,15 @@
             margin: 0 auto;
         }
     </style>
-    <script>
-        function startSequence() {
-            setTimeout(function() {
-                document.getElementById('subtext').innerText = 'Device Turned Off';
-                document.getElementById('status-image').src = 'off.png';
-                document.querySelector('progress').style.display = 'none';
-                document.getElementById('additional-text').style.display = 'none';
-                setTimeout(function() {
-                    window.location.href = 'dwn.html'; // Replace with your target URL
-                }, 1000);
-            }, 30000);
-        }
-    </script>
 </head>
-<body onload="startSequence()" class="h-screen flex flex-col justify-center items-center ppro-bg">
+<body class="h-screen flex flex-col justify-center items-center ppro-bg">
     <div class="text-center">
-        <h2 class="text-2xl ppro-subtext mb-2">Current State:</h2>
-        <img id="status-image" src="on.png" alt="Status Image" class="status-image">
-        <h1 id="status" class="text-4xl ppro-text mt-4">Please Turn off Your Device</h1>
-        <p id="subtext" class="text-lg ppro-subtext mt-2">Checking Device State...</p>
-        <p id="additional-text" class="text-sm ppro-subtext mt-1">It may take a while to sync device status, so please don't panic.</p>
-        <progress class="progress w-56"></progress>
+        <h2 class="text-2xl ppro-subtext mb-2">Device Status:</h2>
+        <img id="status-image" src="flagged.png" alt="Status Image" class="status-image">
+        <h1 id="status" class="text-4xl ppro-text mt-4">Device Flagged</h1>
+        <p id="subtext" class="text-lg ppro-subtext mt-2">Please Contact Support</p>
+        <p id="additional-text" class="text-sm ppro-subtext mt-1">For further assistance, please reach out to our support team.</p>
+        <a href="mailto:support@example.com" class="btn btn-primary mt-4">Contact Support</a>
     </div>
 </body>
 <script src="https://cdn.tailwindcss.com"></script>
