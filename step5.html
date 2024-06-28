@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Establishing Connections</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+
     <style>
+
         .ppro-bg {
             background-color: #f0f4f8;
         }
@@ -18,13 +21,14 @@
         .ppro-text-red {
             color: #ea4335; /* red */
         }
-        .spinner {
-            border: 4px solid rgba(0, 123, 255, 0.3);
-            border-top: 4px solid #1a73e8;
+        .loader {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #1a73e8;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 60px;
+            height: 60px;
             animation: spin 1s linear infinite;
+            margin: 0 auto;
         }
         @keyframes spin {
             0% {
@@ -47,6 +51,12 @@
         }
         .terminal .log {
             margin: 0;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            display: block;
         }
     </style>
     <script>
@@ -129,9 +139,9 @@
 </head>
 <body onload="startSequence()" class="h-screen flex flex-col justify-center items-center ppro-bg">
     <div class="text-center mb-8">
-        <h1 id="status" class="text-4xl ppro-text">Establishing the Connection to ftp://blockmods+imvu.net/https://blockmods.cdn.com</h1>
-        <div class="spinner mx-auto mt-4"></div>
-        <p id="timer" class="text-lg text-gray-700 mt-2"></p>
+        <img src="download (4).png" alt="Logo" class="logo mb-4">
+        <h1 id="status" class="text-3xl ppro-text">Establishing Connection to the Server...</h1>
+        <progress class="progress w-56"></progress>        <p id="timer" class="text-lg text-gray-700 mt-4"></p>
         <div id="countdown" class="text-3xl text-gray-700 mt-4" style="display: none;"></div>
     </div>
     <div class="terminal" id="terminal-log">
@@ -139,4 +149,6 @@
         <p class="log">Connecting to ftp://blockmods+imvu.net/https://blockmods.cdn.com...</p>
     </div>
 </body>
+<script src="https://cdn.tailwindcss.com"></script>
+
 </html>
